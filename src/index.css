@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Assistant", "Segoe UI", system-ui, sans-serif;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #f7f5f2;
+  color: #292524;
+  font-family: var(--font-sans);
+}
