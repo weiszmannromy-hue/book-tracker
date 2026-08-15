@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { LibraryProvider } from './context/LibraryContext';
 import Header from './components/Header';
 import SearchPage from './pages/SearchPage';
@@ -8,7 +8,7 @@ import BookDetailPage from './pages/BookDetailPage';
 export default function App() {
   return (
     <LibraryProvider>
-      <BrowserRouter>
+      <HashRouter>
         <div className="min-h-screen">
           <Header />
           <main>
@@ -21,7 +21,7 @@ export default function App() {
             </Routes>
           </main>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </LibraryProvider>
   );
 }
