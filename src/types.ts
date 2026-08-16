@@ -19,6 +19,7 @@ export interface Book {
   description?: string;
   pageCount?: number;
   publishedDate?: string;
+  categories?: string[];
 }
 
 /** ספר בספרייה האישית של המשתמש, כולל נתוני מעקב. */

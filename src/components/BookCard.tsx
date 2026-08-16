@@ -9,6 +9,9 @@ interface BookCardProps {
 
 export default function BookCard({ book, footer, onClick }: BookCardProps) {
   const Wrapper = onClick ? 'button' : 'div';
+  // Google Books מחזיר לרוב קטגוריה בפורמט "Fiction / Fantasy / General";
+  // מציגים רק את הקטע הראשון כתגית קצרה.
+  const categoryTag = book.categories?.[0]?.split('/')[0]?.trim();
 
   return (
     <div className="flex flex-col overflow-hidden rounded-xl border border-stone-200 bg-white shadow-sm transition-shadow hover:shadow-md">
@@ -16,7 +19,12 @@ export default function BookCard({ book, footer, onClick }: BookCardProps) {
         onClick={onClick}
         className={`flex flex-1 flex-col text-right ${onClick ? 'cursor-pointer' : ''}`}
       >
-        <div className="flex aspect-[2/3] items-center justify-center bg-stone-100">
+        <div className="relative flex aspect-[2/3] items-center justify-center bg-stone-100">
+          {categoryTag && (
+            <span className="absolute right-1.5 top-1.5 rounded-full bg-emerald-700/90 px-2 py-0.5 text-[10px] font-medium text-white shadow-sm">
+              {categoryTag}
+            </span>
+          )}
           {book.coverUrl ? (
             <img
               src={book.coverUrl}
