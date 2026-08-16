@@ -25,12 +25,12 @@ export default function SearchBar({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder="חפש לפי כותרת, מחבר או ISBN..."
-        className="flex-1 rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm shadow-sm outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600"
+        className="flex-1 rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm shadow-sm outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500"
       />
       <button
         type="submit"
         disabled={loading}
-        className="rounded-lg bg-emerald-700 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-emerald-800 disabled:opacity-60"
+        className="rounded-lg bg-violet-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-violet-700 disabled:opacity-60"
       >
         {loading ? 'מחפש...' : 'חפש'}
       </button>

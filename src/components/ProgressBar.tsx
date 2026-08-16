@@ -16,7 +16,7 @@ export default function ProgressBar({
     <div className="w-full">
       <div className="h-2 w-full overflow-hidden rounded-full bg-stone-200">
         <div
-          className="h-full rounded-full bg-emerald-600 transition-all"
+          className="h-full rounded-full bg-violet-500 transition-all"
           style={{ width: `${percent}%` }}
         />
       </div>

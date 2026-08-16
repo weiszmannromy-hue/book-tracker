@@ -19,7 +19,7 @@ export default function ReviewForm({ review, onSave }: ReviewFormProps) {
       onBlur={handleBlur}
       placeholder="כתוב כאן את הביקורת האישית שלך על הספר..."
       rows={4}
-      className="w-full resize-y rounded-lg border border-stone-300 px-3 py-2 text-sm outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600"
+      className="w-full resize-y rounded-lg border border-stone-300 px-3 py-2 text-sm outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500"
     />
   );
 }

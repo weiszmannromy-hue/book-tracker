@@ -29,7 +29,7 @@ export default function ProgressEditor({
           max={max}
           value={Math.min(currentPage, max)}
           onChange={(e) => onChange(Number(e.target.value))}
-          className="flex-1 accent-emerald-700"
+          className="flex-1 accent-violet-600"
         />
         <input
           type="number"
@@ -37,7 +37,7 @@ export default function ProgressEditor({
           max={max}
           value={currentPage}
           onChange={handleNumberChange}
-          className="w-20 rounded-lg border border-stone-300 px-2 py-1 text-sm outline-none focus:border-emerald-600"
+          className="w-20 rounded-lg border border-stone-300 px-2 py-1 text-sm outline-none focus:border-violet-500"
         />
       </div>
       <p className="text-sm text-stone-500">

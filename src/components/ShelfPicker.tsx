@@ -13,7 +13,7 @@ export default function ShelfPicker({ onAdd }: ShelfPickerProps) {
       <select
         value={shelf}
         onChange={(e) => setShelf(e.target.value as Shelf)}
-        className="flex-1 rounded-lg border border-stone-300 bg-white px-2 py-1.5 text-xs outline-none focus:border-emerald-600"
+        className="flex-1 rounded-lg border border-stone-300 bg-white px-2 py-1.5 text-xs outline-none focus:border-violet-500"
       >
         {SHELVES.map((s) => (
           <option key={s.id} value={s.id}>
@@ -24,7 +24,7 @@ export default function ShelfPicker({ onAdd }: ShelfPickerProps) {
       <button
         type="button"
         onClick={() => onAdd(shelf)}
-        className="rounded-lg bg-emerald-700 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-emerald-800"
+        className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-violet-700"
       >
         הוסף
       </button>
