@@ -10,6 +10,7 @@ interface GoogleVolume {
     description?: string;
     pageCount?: number;
     publishedDate?: string;
+    categories?: string[];
     imageLinks?: {
       thumbnail?: string;
       smallThumbnail?: string;
@@ -44,14 +45,15 @@ function normalize(volume: GoogleVolume): Book {
     description: info.description ? stripHtml(info.description) : undefined,
     pageCount: info.pageCount,
     publishedDate: info.publishedDate,
+    categories: info.categories,
   };
 }
 
-export async function searchBooks(query: string): Promise<Book[]> {
+export async function searchBooks(query: string, maxResults = 24): Promise<Book[]> {
   const trimmed = query.trim();
   if (!trimmed) return [];
 
-  const url = `${API_URL}?q=${encodeURIComponent(trimmed)}&maxResults=24`;
+  const url = `${API_URL}?q=${encodeURIComponent(trimmed)}&maxResults=${maxResults}`;
   const res = await fetch(url);
 
   if (!res.ok) {
@@ -60,6 +62,11 @@ export async function searchBooks(query: string): Promise<Book[]> {
 
   const data: GoogleBooksResponse = await res.json();
   return (data.items ?? []).map(normalize);
+}
+
+/** מחפש ספרים לפי נושא/ז'אנר (subject) לשורות עיון בעמוד החיפוש. */
+export async function searchByCategory(subject: string, maxResults = 8): Promise<Book[]> {
+  return searchBooks(`subject:"${subject}"`, maxResults);
 }
 
 export async function getBookById(id: string): Promise<Book | null> {
