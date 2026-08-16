@@ -30,4 +30,33 @@ export interface LibraryBook extends Book {
   review?: string;
   addedAt: string;
   updatedAt: string;
+  /** מזהי אוספים (Collection) שהספר שייך אליהם. */
+  collectionIds?: string[];
+}
+
+/** ספר ברשימת המשאלות - שמור לעיון, עדיין לא בספרייה הפעילה. */
+export interface WishlistItem extends Book {
+  addedAt: string;
+}
+
+/** אוסף מותאם אישית לקיבוץ ספרים בספרייה (למשל "קריאת קיץ"). */
+export interface Collection {
+  id: string;
+  name: string;
+}
+
+/** סשן קריאה בודד - נרשם דרך מסך "היום". */
+export interface ReadingSession {
+  id: string;
+  bookId: string;
+  /** תאריך מקומי בפורמט YYYY-MM-DD. */
+  date: string;
+  pagesRead: number;
+  minutes: number;
+  createdAt: string;
+}
+
+/** יעד קריאה אישי, נקבע במסך ההגדרות. */
+export interface ReadingGoal {
+  dailyPages?: number;
 }

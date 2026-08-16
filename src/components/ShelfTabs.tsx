@@ -22,7 +22,7 @@ export default function ShelfTabs({ active, counts, onChange }: ShelfTabsProps) 
           onClick={() => onChange(tab.id)}
           className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
             active === tab.id
-              ? 'bg-emerald-700 text-white'
+              ? 'bg-violet-600 text-white'
               : 'bg-white text-stone-600 hover:bg-stone-100'
           }`}
         >

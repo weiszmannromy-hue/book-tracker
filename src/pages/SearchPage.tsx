@@ -6,6 +6,7 @@ import { BROWSE_CATEGORIES } from '../data/categories';
 import SearchBar from '../components/SearchBar';
 import BookCard from '../components/BookCard';
 import ShelfPicker from '../components/ShelfPicker';
+import WishlistButton from '../components/WishlistButton';
 import CategoryRow from '../components/CategoryRow';
 import type { Book } from '../types';
 
@@ -14,7 +15,7 @@ export default function SearchPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [searched, setSearched] = useState(false);
-  const { books, addBook } = useLibrary();
+  const { books, addBook, wishlist, addToWishlist, removeFromWishlist } = useLibrary();
   const navigate = useNavigate();
 
   async function handleSearch(query: string) {
@@ -53,7 +54,7 @@ export default function SearchPage() {
         <>
           <button
             onClick={clearSearch}
-            className="mt-4 text-sm font-medium text-emerald-700 hover:underline"
+            className="mt-4 text-sm font-medium text-violet-600 hover:underline"
           >
             ← חזרה לעיון לפי קטגוריה
           </button>
@@ -65,19 +66,29 @@ export default function SearchPage() {
           <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
             {results.map((book) => {
               const inLibrary = books.some((b) => b.id === book.id);
+              const inWishlist = wishlist.some((b) => b.id === book.id);
               return (
                 <BookCard
                   key={book.id}
                   book={book}
                   onClick={() => navigate(`/book/${book.id}`, { state: book })}
                   footer={
-                    inLibrary ? (
-                      <p className="text-center text-xs font-medium text-emerald-700">
-                        ✓ כבר בספרייה
-                      </p>
-                    ) : (
-                      <ShelfPicker onAdd={(shelf) => addBook(book, shelf)} />
-                    )
+                    <div className="flex flex-col gap-2">
+                      {inLibrary ? (
+                        <p className="text-center text-xs font-medium text-violet-700">
+                          ✓ כבר בספרייה
+                        </p>
+                      ) : (
+                        <>
+                          <ShelfPicker onAdd={(shelf) => addBook(book, shelf)} />
+                          <WishlistButton
+                            inWishlist={inWishlist}
+                            onAdd={() => addToWishlist(book)}
+                            onRemove={() => removeFromWishlist(book.id)}
+                          />
+                        </>
+                      )}
+                    </div>
                   }
                 />
               );

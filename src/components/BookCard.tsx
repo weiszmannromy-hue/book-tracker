@@ -21,7 +21,7 @@ export default function BookCard({ book, footer, onClick }: BookCardProps) {
       >
         <div className="relative flex aspect-[2/3] items-center justify-center bg-stone-100">
           {categoryTag && (
-            <span className="absolute right-1.5 top-1.5 rounded-full bg-emerald-700/90 px-2 py-0.5 text-[10px] font-medium text-white shadow-sm">
+            <span className="absolute right-1.5 top-1.5 rounded-full bg-violet-600/90 px-2 py-0.5 text-[10px] font-medium text-white shadow-sm">
               {categoryTag}
             </span>
           )}
