@@ -1,7 +1,26 @@
 @import "tailwindcss";
 
+/* Yehuda CLM - גופן עברי (Culmus project, GPL). יש רק שני משקלים אמיתיים
+   (Light/Bold), אז ממפים טווח משקלים לכל אחד כדי ש-font-medium/font-semibold
+   הקיימים באפליקציה יקבלו את הפאונדרי הבולט. */
+@font-face {
+  font-family: "Yehuda CLM";
+  src: url("./assets/fonts/yehuda-clm/yehuda-clm-light.ttf") format("truetype");
+  font-weight: 100 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yehuda CLM";
+  src: url("./assets/fonts/yehuda-clm/yehuda-clm-bold.ttf") format("truetype");
+  font-weight: 401 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --font-sans: "Assistant", "Segoe UI", system-ui, sans-serif;
+  --font-sans: "Yehuda CLM", "Assistant", "Segoe UI", system-ui, sans-serif;
 }
 
 html {
